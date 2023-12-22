@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+    <title th:text="#{Home}"></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" th:href="@{/bootstrap-5.3.2-dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/font-awesome/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <script th:src="@{/bootstrap-5.3.2-dist/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+    <div class="container mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="card shadow">
+                <h5 class="card-header text-white text-center py-4" style="background-color:#33b5e5">
+                    <strong>Spring Thymeleaf</strong>
+                </h5>
+                <div class="card-body pt-3 pb-3" style="padding-left:80px;padding-right:80px;">
+                    <h5 class="card-title"><span th:text="#{Home}"></span></h5>
+                    <div>
+                        <div class="accordion accordion-flush" id="accordionThymeleaf">
+                            <!-- 显示来自资源属性文件中的属性值 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-primary text-light collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseMessage"
+                                        aria-expanded="false" aria-controls="collapseMessage">
+                                        <span th:text="#{HeaderMessage}"></span>
+                                    </button>
+                                </h2>
+                                <div id="collapseMessage" class="accordion-collapse collapse show"
+                                    data-bs-parent="#accordionThymeleaf">
+                                    <div class="accordion-body bg-primary-subtle">
+                                        <strong>
+                                            <span th:text="#{WelcomeMessage}"></span>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 显示模型属性值 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-primary text-light collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseModel" aria-expanded="false"
+                                        aria-controls="collapseModel">
+                                        <span th:text="#{HeaderModel}"></span>
+                                    </button>
+                                </h2>
+                                <div id="collapseModel" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionThymeleaf">
+                                    <div class="accordion-body bg-primary-subtle">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col"><span th:text="#{TableHeaderColumnKey}"></span></th>
+                                                    <th scope="col"><span th:text="#{TableHeaderColumnValue}"></span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>technique</td>
+                                                    <td><span th:text="${technique}"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>templateEngine</td>
+                                                    <td><span th:text="${templateEngine}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 显示模型聚合属性值 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-primary text-light collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseCollectionModel"
+                                        aria-expanded="false" aria-controls="collapseCollectionModel">
+                                        <span th:text="#{HeaderCollectionModel}"></span>
+                                    </button>
+                                </h2>
+                                <div id="collapseCollectionModel" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionThymeleaf">
+                                    <div class="accordion-body bg-primary-subtle">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"><span th:text="#{TextName}"></span>
+                                                    </th>
+                                                    <th scope="col"><span th:text="#{TextSex}"></span></th>
+                                                    <th scope="col"><span th:text="#{TextAge}"></span></th>
+                                                    <th scope="col"><span th:text="#{TextScore}"></span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="student: ${students}">
+                                                    <td th:text="${student.name}" />
+                                                    <td th:text="${student.sex}" />
+                                                    <td th:text="${student.age}" />
+                                                    <td th:text="${student.score}" />
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 按条件显示模型属性值 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-primary text-light collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseConditionalModel"
+                                        aria-expanded="false" aria-controls="collapseConditionalModel">
+                                        <span th:text="#{HeaderConditionalModel}"></span>
+                                    </button>
+                                </h2>
+                                <div id="collapseConditionalModel" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionThymeleaf">
+                                    <div class="accordion-body bg-primary-subtle">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"><span th:text="#{TextName}"></span>
+                                                    </th>
+                                                    <th scope="col"><span th:text="#{TextSex}"></span></th>
+                                                    <th scope="col"><span th:text="#{TextAge}"></span></th>
+                                                    <th scope="col"><span th:text="#{TextScore}"></span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="student: ${students}"
+                                                    th:if="${student.score &gt;= 82 and student.score &lt;= 85}">
+                                                    <td th:text="${student.name}"></td>
+                                                    <td th:switch="${student.sex}">
+                                                        <span th:case="true" th:text="#{TextMale}"></span>
+                                                        <span th:case="false" th:text="#{TextFemale}"></span>
+                                                    </td>
+                                                    <td th:text="${student.age}"></td>
+                                                    <td th:text="${student.score}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <a th:href="@{/student}" target="_self" class="btn btn-primary mb-2"><span
+                        th:text="#{TitleAddNewStudent}"></a>
+                <a th:href="@{/index(lang='zh_CN')}" target="_self" class="btn btn-primary mb-2"><span
+                        th:text="#{SwitchToChinese}"></a>
+                <a th:href="@{/index(lang='en_US')}" target="_self" class="btn btn-primary mb-2"><span
+                        th:text="#{SwitchToEnglish}"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

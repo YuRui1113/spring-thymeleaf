@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+    <title th:text="#{TitleAddNewStudent}"></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" th:href="@{/bootstrap-5.3.2-dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/font-awesome/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <script th:src="@{/bootstrap-5.3.2-dist/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+    <div class="container mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="card shadow">
+                <h5 class="card-header text-white text-center py-4" style="background-color:#33b5e5">
+                    <strong>Spring Thymeleaf</strong>
+                </h5>
+                <div class="card-body pt-3 pb-3" style="padding-left:80px;padding-right:80px;">
+                    <h5 class="card-title"><span th:text="#{TitleAddNewStudent}"></span></h5>
+                    <div class="mt-3">
+                        <form action="#" th:action="@{/student}" th:object="${student}" method="post">
+                            <p>
+                                <span th:text="#{TextPromptUserInput}"><br />
+                            </p>
+                            <div class="mt-2">
+                                <!-- <ul>
+                                    <li class="text-danger" th:each="err : ${#fields.errors('name')}"
+                                        th:text="${err}" />
+                                    <li class="text-danger" th:each="err : ${#fields.errors('sex')}" th:text="${err}" />
+                                    <li class="text-danger" th:each="err : ${#fields.errors('age')}" th:text="${err}" />
+                                    <li class="text-danger" th:each="err : ${#fields.errors('score')}"
+                                        th:text="${err}" />
+                                </ul> -->
+                                <ul>
+                                    <li class="text-danger" th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+                                </ul>
+                                
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label><span th:text="#{TextName}"></label>
+                                <div class="input-group w-50">
+                                    <span class="input-group-text"><span class="fas fa-user"></span></span>
+                                    <input type="text" th:field="*{name}" th:placeholder="#{TextName}"
+                                        class="form-control"
+                                        th:classappend="${#fields.hasErrors('name')}? error-input-50: form-control" />
+                                </div>
+                            </div>
+                            <div>
+                                <span class="text-danger" th:if="${#fields.hasErrors('name')}"
+                                    th:errors="*{name}"></span>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label><span th:text="#{TextSex}"></label>
+                                <div class="input-group">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="sexOptions" th:field="*{sex}"
+                                            th:classappend="${#fields.hasErrors('sex')}? error-radio  " id="rdoMale"
+                                            value="true">
+                                        <label class="form-check-label" for="rdoMale"><span
+                                                th:text="#{TextMale}"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="sexOptions" th:field="*{sex}"
+                                            th:classappend="${#fields.hasErrors('sex')}? error-radio " id="rdoFemale"
+                                            value="false">
+                                        <label class="form-check-label" for="rdoFemale"><span
+                                                th:text="#{TextFemale}"></span></label>
+                                    </div>
+                                </div>
+                                <span class="text-danger" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}"></span>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label><span th:text="#{TextAge}"></label>
+                                <div class="input-group w-25">
+                                    <span class="input-group-text"><span class="fas fa-id-card"></span></span>
+                                    <input type="text" th:field="*{age}" th:placeholder="#{TextAge}"
+                                        class="form-control"
+                                        th:classappend="${#fields.hasErrors('age')}? error-input-25 : form-control" />
+                                </div>
+                            </div>
+                            <div>
+                                <span class="text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label><span th:text="#{TextScore}"></label>
+                                <div class="input-group w-25">
+                                    <span class="input-group-text"><span class="fas fa-calculator"></span></span>
+                                    <input type="text" th:field="*{score}" th:placeholder="#{TextScore}"
+                                        class="form-control"
+                                        th:classappend="${#fields.hasErrors('score')}? error-input-25 : form-control" />
+                                </div>
+                            </div>
+                            <div>
+                                <span class="text-danger" th:if="${#fields.hasErrors('score')}"
+                                    th:errors="*{score}"></span>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <button type="submit" class="btn btn-outline-primary"><span
+                                        th:text="#{ButtonSubmit}"></button>
+                                <p class="mt-2"><a th:href="@{/index}"><span th:text="#{TextReturnToHome}"></span></a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

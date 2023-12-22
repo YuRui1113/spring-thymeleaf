@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+    <title th:text="#{TitleShowSubmit}"></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" th:href="@{/bootstrap-5.3.2-dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/font-awesome/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <script th:src="@{/bootstrap-5.3.2-dist/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+    <div class="container mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="card shadow">
+                <h5 class="card-header text-white text-center py-4" style="background-color:#33b5e5">
+                    <strong>Spring Thymeleaf</strong>
+                </h5>
+                <div class="card-body pt-3 pb-3" style="padding-left:80px;padding-right:80px;">
+                    <h5 class="card-title"><span th:text="#{TitleShowSubmit}"></span></h5>
+                    <div class="mt-3">
+                        <hr />
+                        <div class="mb-3 row bg-primary">
+                            <label for="name" class="col-sm-2 col-form-label text-light"><span
+                                    th:text="#{TextName}"></label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext text-light" id="name"
+                                    th:value="${student.name}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row bg-black">
+                            <label for="sex" class="col-sm-2 col-form-label text-light"><span
+                                    th:text="#{TextSex}"></label>
+                            <div class="col-sm-10">
+                                <div th:switch="${student.sex}">
+                                    <span th:case="true" th:text="#{TextMale}"
+                                        class="form-control-plaintext text-light"></span>
+                                    <span th:case="false" th:text="#{TextFemale}"
+                                        class="form-control-plaintext text-light"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row bg-primary">
+                            <label for="age" class="col-sm-2 col-form-label text-light"><span
+                                    th:text="#{TextAge}"></label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext text-light" id="age"
+                                    th:value="${student.age}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row bg-black">
+                            <label for="score" class="col-sm-2 col-form-label text-light"><span
+                                    th:text="#{TextScore}"></label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext text-light" id="score"
+                                    th:value="${student.score}">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <p class="mt-2"><a th:href="@{/index}"><span th:text="#{TextReturnToHome}"></span></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    locale: en_US
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  thymeleaf:
+    encoding: UTF-8
+  main:
+    allow-bean-definition-overriding: true
